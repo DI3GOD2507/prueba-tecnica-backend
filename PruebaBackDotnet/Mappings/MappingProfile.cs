@@ -13,11 +13,19 @@ namespace PruebaBackDotnet.Mappings
 
             CreateMap<User, UserDto>()
                 .ForMember(dest => dest.Departamento, opt => opt.MapFrom(src => src.Departamento))
-                .ForMember(dest => dest.Cargo, opt => opt.MapFrom(src => src.Cargo));
+                .ForMember(dest => dest.Cargo, opt => opt.MapFrom(src => src.Cargo))
+                .ForMember(dest => dest.IdDepartamento, opt => opt.MapFrom(src => src.IdDepartamento))
+                .ForMember(dest => dest.IdCargo, opt => opt.MapFrom(src => src.IdCargo));
 
-            // Este es el que te faltaba para poder hacer POST y PUT
-            CreateMap<UserDto, User>();
+
+            CreateMap<UserDto, User>()
+                .ForMember(dest => dest.IdDepartamento, opt => opt.MapFrom(src => src.IdDepartamento))
+                .ForMember(dest => dest.IdCargo, opt => opt.MapFrom(src => src.IdCargo))
+
+                .ForMember(dest => dest.Departamento, opt => opt.Ignore())
+                .ForMember(dest => dest.Cargo, opt => opt.Ignore())
+
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
-
 }
