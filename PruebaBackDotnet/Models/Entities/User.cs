@@ -1,5 +1,8 @@
-﻿namespace PruebaBackDotnet.Models.Entities
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace PruebaBackDotnet.Models.Entities
 {
+    [Index(nameof(Usuario), IsUnique = true, Name = "IX_Users_Usuario_Unique")]
     public class User
     {
 
